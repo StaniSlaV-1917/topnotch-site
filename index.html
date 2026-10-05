@@ -410,10 +410,6 @@
         <a class="navbar-item tn-nav-link" href="#projects" data-i18n="nav.projects">Projects</a>
         <a class="navbar-item tn-nav-link" href="#contact" data-i18n="nav.contact">Contact</a>
         <div class="tn-header-actions">
-          <div class="tn-lang" role="group" aria-label="Language">
-            <button type="button" data-lang="en" aria-pressed="true">EN</button>
-            <button type="button" data-lang="ru" aria-pressed="false">RU</button>
-          </div>
           <a class="button is-primary is-small" href="#contact" data-i18n="cta.quote">Request a quote</a>
         </div>
       </div>
@@ -604,9 +600,6 @@
         <div class="column is-5-desktop">
           <ul class="tn-contacts">
             <li><span data-i18n="contact.email">Email</span><a href="mailto:hello@topnotchbim.example" id="tn-email">hello@topnotchbim.example</a></li>
-            <li><span data-i18n="contact.phone">Phone, WhatsApp</span><a href="tel:+10000000000">+1 000 000 0000</a></li>
-            <li><span data-i18n="contact.messenger">Telegram</span><a href="https://t.me/" rel="noopener">@topnotchbim</a></li>
-            <li><span data-i18n="contact.hours">Working hours</span><b data-i18n="contact.hours.v">Mon–Fri, 09:00–18:00 (UTC+0)</b></li>
           </ul>
         </div>
       </div>
@@ -646,112 +639,6 @@
 <script>
 (function () {
   'use strict';
-
-  // ===== Russian dictionary. English lives in the markup and is read from it on load. =====
-  var RU = {
-    'meta.title': 'Top Notch BIM · координация и моделирование MEP',
-    'nav.menu': 'Меню',
-    'nav.services': 'Услуги',
-    'nav.process': 'Как работаем',
-    'nav.projects': 'Проекты',
-    'nav.contact': 'Контакты',
-    'cta.quote': 'Запросить расчёт',
-    'cta.services': 'Посмотреть услуги',
-    'video.open': 'Смотреть видео о проекте',
-    'video.dialog': 'Видео о проекте',
-    'video.close': 'Закрыть видео',
-
-    'hero.eyebrow': 'Координация и моделирование MEP в BIM',
-    'hero.lead': 'Моделирование инженерных систем по BG (фоновым подложкам), 3D-модели по облакам точек, Revit-модели по PDF/DWG, BIM-координация и проверка коллизий, монтажные чертежи, спецификации и исполнительная документация.',
-    'hero.p1': 'Проверка инженером',
-    'hero.p2': 'Согласование всех разделов',
-    'hero.p3': 'Понятные статусы проекта',
-
-    'services.eyebrow': 'Услуги',
-    'services.title': 'Инженерные системы: от документации до сдачи',
-    'service.coordination.title': 'Координация',
-    'service.coordination.text': 'Сводные модели Revit и Navisworks, проверка коллизий и журнал замечаний по системам и этажам.',
-    'service.models.title': 'Моделирование и shop drawings',
-    'service.models.text': 'Модели Revit по PDF и DWG, монтажные чертежи и спецификации.',
-    'service.asbuilt.title': 'Исполнительная документация',
-    'service.asbuilt.text': 'Модели и чертежи с учётом фактического монтажа и изменений проекта.',
-
-    'process.eyebrow': 'Как мы работаем',
-    'process.title': 'Четыре понятных этапа до сдачи',
-    'step1.title': 'Разбор документации',
-    'step1.text': 'Проверяем чертежи, модели и спецификации.',
-    'step2.title': 'Объём и график',
-    'step2.text': 'Согласуем результат, этапы и форматы.',
-    'step3.title': 'Моделирование и координация',
-    'step3.text': 'Показываем прогресс и закрываем замечания.',
-    'step4.title': 'Проверка и сдача',
-    'step4.text': 'Передаём согласованные модели, чертежи и спецификации.',
-
-    'projects.eyebrow': 'Примеры проектов',
-    'projects.title': 'BG-моделирование и другие задачи MEP',
-    'projects.ph': 'Заглушка',
-    'p1.title': 'Офисное здание',
-    'p1.disc': 'ОВиК · ВК · пожаротушение',
-    'p1.scope': 'Трассировка инженерных систем по архитектурным и конструктивным BG · проверка коллизий',
-    'p2.title': '3D-модель по облаку точек',
-    'p2.disc': 'Существующий объект · Scan-to-BIM',
-    'p2.scope': 'Построение модели по данным лазерного сканирования',
-    'p3.title': 'Склад',
-    'p3.disc': 'Пожаротушение · электрика',
-    'p3.scope': 'Исполнительная модель · спецификации',
-
-    'contact.eyebrow': 'Контакты',
-    'contact.title': 'Обсудим ваш проект',
-    'contact.lead': 'Опишите задачу и сроки. Ответим в течение рабочего дня.',
-    'contact.email': 'Email',
-    'contact.phone': 'Телефон, WhatsApp',
-    'contact.messenger': 'Telegram',
-    'contact.hours': 'Часы работы',
-    'contact.hours.v': 'Пн–Пт, 09:00–18:00 (UTC+0)',
-    'form.name': 'Имя',
-    'form.email': 'Email',
-    'form.type': 'Тип проекта',
-    'form.other': 'Другое или несколько услуг',
-    'form.msg': 'Сообщение',
-    'form.msg.ph': 'Тип объекта, разделы, сроки и исходные данные',
-    'form.submit': 'Отправить запрос',
-    'form.err.name': 'Укажите имя.',
-    'form.err.email': 'Укажите корректный email.',
-    'form.err.msg': 'Добавьте пару слов о проекте.',
-    'form.ok': 'Откроется почтовое приложение с готовым письмом. Если этого не произойдёт, напишите на email справа.',
-
-    'footer.about': 'BIM-координация и моделирование инженерных систем.'
-  };
-
-  var root = document.documentElement;
-  var textNodes = document.querySelectorAll('[data-i18n]');
-  var phNodes = document.querySelectorAll('[data-i18n-placeholder]');
-  var ariaNodes = document.querySelectorAll('[data-i18n-aria]');
-  var EN = { 'meta.title': document.title };
-  textNodes.forEach(function (el) { EN[el.dataset.i18n] = el.innerHTML; });
-  phNodes.forEach(function (el) { EN[el.dataset.i18nPlaceholder] = el.placeholder; });
-  ariaNodes.forEach(function (el) { EN[el.dataset.i18nAria] = el.getAttribute('aria-label'); });
-
-  function t(key, lang) { return (lang === 'ru' && RU[key] != null) ? RU[key] : EN[key]; }
-
-  function setLang(lang) {
-    textNodes.forEach(function (el) { el.innerHTML = t(el.dataset.i18n, lang); });
-    phNodes.forEach(function (el) { el.placeholder = t(el.dataset.i18nPlaceholder, lang); });
-    ariaNodes.forEach(function (el) { el.setAttribute('aria-label', t(el.dataset.i18nAria, lang)); });
-    document.title = t('meta.title', lang);
-    root.lang = lang;
-    document.querySelectorAll('[data-lang]').forEach(function (b) {
-      b.setAttribute('aria-pressed', String(b.dataset.lang === lang));
-    });
-    try { localStorage.setItem('tn-lang', lang); } catch (e) {}
-  }
-
-  document.querySelectorAll('[data-lang]').forEach(function (b) {
-    b.addEventListener('click', function () { setLang(b.dataset.lang); });
-  });
-  var saved = null;
-  try { saved = localStorage.getItem('tn-lang'); } catch (e) {}
-  if (saved === 'ru') setLang('ru');
 
   // ===== Mobile menu =====
   var burger = document.querySelector('.navbar-burger');
